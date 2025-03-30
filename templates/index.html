@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h2>Добро пожаловать в словарь заимствованных слов КФУ</h2>
+    <p>Наш проект посвящен исследованию заимствованных слов в русском языке и их происхождению.</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('dictionary') }}" class="btn">Перейти к словарю</a>
+        <a href="{{ url_for('memes') }}" class="btn btn-secondary">Посмотреть мемы</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <h3>Богатая коллекция</h3>
+        <p>Более 1000 заимствованных слов с подробным описанием их происхождения.</p>
+    </div>
+    <div class="feature">
+        <h3>Удобный поиск</h3>
+        <p>Быстрый поиск по словам, языкам происхождения и определениям.</p>
+    </div>
+    <div class="feature">
+        <h3>Академический подход</h3>
+        <p>Материалы подготовлены ведущими лингвистами КФУ.</p>
+    </div>
+</section>
+{% endblock %}

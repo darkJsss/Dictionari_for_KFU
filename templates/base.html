@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь заимствованных слов КФУ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='images/kfu_logo.png') }}" alt="КФУ Логотип">
+                    <div class="logo-text">
+                        <h1>Казанский (Приволжский) Федеральный Университет</h1>
+                        <p>Словарь заимствованных слов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Главная</a></li>
+                    <li><a href="{{ url_for('dictionary') }}">Словарь</a></li>
+                    <li><a href="{{ url_for('memes') }}">Мемы</a></li>
+                    <li><a href="{{ url_for('suggest') }}">Предложить слово</a></li>
+                    <li><a href="{{ url_for('download_excel') }}">Скачать Excel</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Казанский Федеральный Университет. Все права защищены.</p>
+            <p>Разработано студентами Лицея им.Н.И.Лобачевского при КФУ</p>
+        </div>
+    </footer>
+</body>
+</html>

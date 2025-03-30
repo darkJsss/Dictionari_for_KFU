@@ -1,0 +1,375 @@
+/* Основные стили */
+:root {
+    --kfu-green: #006837;
+    --kfu-dark-green: #004d26;
+    --kfu-light-green: #e6f2ed;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Шапка */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-top {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--kfu-light-green);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.logo-text h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--kfu-green);
+}
+
+.logo-text p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+    color: var(--dark-gray);
+}
+
+/* Навигация */
+nav {
+    background-color: var(--kfu-green);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 15px 0;
+    display: block;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--kfu-light-green);
+}
+
+/* Основное содержимое */
+main {
+    padding: 40px 0;
+    min-height: 70vh;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 0;
+    background-color: var(--kfu-light-green);
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.hero h2 {
+    color: var(--kfu-dark-green);
+    font-size: 2rem;
+}
+
+.cta-buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--kfu-green);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin: 0 10px;
+}
+
+.btn:hover {
+    background-color: var(--kfu-dark-green);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--kfu-green);
+    border: 1px solid var(--kfu-green);
+}
+
+.btn-secondary:hover {
+    background-color: var(--kfu-light-green);
+}
+
+/* Секции с фичами */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--kfu-green);
+}
+
+.feature h3 {
+    color: var(--kfu-green);
+    margin-top: 0;
+}
+
+/* Словарь */
+.dictionary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.search-form {
+    display: flex;
+}
+
+.search-form input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    width: 300px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: var(--kfu-green);
+    color: var(--white);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: var(--kfu-dark-green);
+}
+
+.word-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.word-list th, .word-list td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.word-list th {
+    background-color: var(--kfu-green);
+    color: var(--white);
+    font-weight: 500;
+}
+
+.word-list tr:nth-child(even) {
+    background-color: var(--kfu-light-green);
+}
+
+.word-list tr:hover {
+    background-color: #e0e0e0;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Мемы */
+.memes-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.memes-header h2 {
+    color: var(--kfu-dark-green);
+}
+
+.meme-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.meme {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.meme:hover {
+    transform: translateY(-5px);
+}
+
+.meme img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.meme p {
+    padding: 15px;
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Подвал */
+footer {
+    background-color: var(--kfu-dark-green);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .dictionary-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-form {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .search-form input {
+        width: 100%;
+    }
+    /* Русский алфавит */
+    .alphabet-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 20px 0;
+        justify-content: center;
+    }
+
+    .alphabet-letter {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: var(--kfu-light-green);
+        color: var(--kfu-green);
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.3s;
+        min-width: 30px;
+        text-align: center;
+    }
+
+    .alphabet-letter:hover {
+        background-color: var(--kfu-green);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .alphabet-letter.active {
+        background-color: var(--kfu-dark-green);
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .words-count {
+        margin-bottom: 15px;
+        font-style: italic;
+        color: var(--kfu-dark-green);
+    }
+
+    /* Адаптивность для алфавита */
+    @media (max-width: 768px) {
+        .alphabet-letter {
+            padding: 6px 8px;
+            font-size: 0.9rem;
+            min-width: 25px;
+        }
+    }
+    /* Обновите placeholder в поиске */
+    .search-form input::placeholder {
+        color: #666;
+        font-style: italic;
+    }
+    /* Добавьте подсказку под поиском */
+    .search-hint {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 5px;
+        text-align: center;
+    }
+}

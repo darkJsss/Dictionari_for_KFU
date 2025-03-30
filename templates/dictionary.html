@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="dictionary-header">
+    <h2>Словарь заимствованных слов</h2>
+    <form action="{{ url_for('dictionary') }}" method="get" class="search-form">
+        <input type="text" name="search" placeholder="Поиск по названиям..." value="{{ search_term }}">
+        <button type="submit">Найти</button>
+        <input type="hidden" name="letter" value="{{ letter_filter }}">
+    </form>
+
+    <div class="alphabet-filter">
+        {% for letter in alphabet %}
+            <a href="{{ url_for('dictionary', letter=letter) }}"
+               class="alphabet-letter {% if letter_filter == letter %}active{% endif %}">
+                {{ letter }}
+            </a>
+        {% endfor %}
+        <a href="{{ url_for('dictionary') }}"
+           class="alphabet-letter {% if not letter_filter %}active{% endif %}">
+            Все
+        </a>
+    </div>
+</section>
+
+<section class="word-list">
+    {% if words %}
+        <div class="words-count">Найдено слов: {{ words|length }}</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Заимствованное слово</th>
+                    <th>Русский аналог</th>
+                    <th>Происхождение</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for word in words %}
+                <tr>
+                    <td><strong>{{ word['Название'] }}</strong></td>
+                    <td>{{ word['Русский аналог'] }}</td>
+                    <td>{{ word['Происхождение'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-results">По вашему запросу ничего не найдено.</p>
+    {% endif %}
+</section>
+{% endblock %}

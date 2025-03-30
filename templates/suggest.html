@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="suggest-form">
+    <h2>Предложить новое слово</h2>
+    
+    {% if success %}
+    <div class="alert success">
+        <i class="fas fa-check-circle"></i>
+        <h3>Спасибо за ваше предложение!</h3>
+        <p>Ваше слово было сохранено в нашей базе данных и будет рассмотрено модераторами.</p>
+        <p>Вы можете предложить ещё одно слово:</p>
+        <a href="{{ url_for('suggest') }}" class="btn">
+            <i class="fas fa-plus"></i> Новое предложение
+        </a>
+    </div>
+    {% else %}
+    <form action="{{ url_for('suggest') }}" method="post">
+        <div class="form-group">
+            <label for="word">Заимствованное слово*</label>
+            <input type="text" id="word" name="word" required placeholder="Например: Компьютер">
+        </div>
+
+        <div class="form-group">
+            <label for="russian_equivalent">Русский аналог (если есть)</label>
+            <input type="text" id="russian_equivalent" name="russian_equivalent" placeholder="Например: ЭВМ">
+        </div>
+
+        <div class="form-group">
+            <label for="origin">Происхождение слова</label>
+            <input type="text" id="origin" name="origin" placeholder="Например: от англ. computer">
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Ваш комментарий или пояснение</label>
+            <textarea id="comment" name="comment" rows="4" placeholder="Почему это слово должно быть в словаре?"></textarea>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn">
+                <i class="fas fa-paper-plane"></i> Отправить предложение
+            </button>
+            <p class="form-hint">Все предложения проходят модерацию перед публикацией</p>
+        </div>
+    </form>
+    {% endif %}
+</section>
+{% endblock %}
