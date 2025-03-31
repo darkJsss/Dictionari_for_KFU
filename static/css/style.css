@@ -141,6 +141,47 @@ main {
     background-color: var(--kfu-light-blue);
 }
 
+/* Мемы */
+.memes-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.memes-header h2 {
+    color: var(--kfu-dark-green);
+}
+
+.meme-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.meme {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.meme:hover {
+    transform: translateY(-5px);
+}
+
+.meme img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.meme p {
+    padding: 15px;
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 /* Секции с фичами */
 .features {
     display: grid;
