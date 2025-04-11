@@ -1,0 +1,195 @@
+/* Mobile First стили */
+@media (max-width: 768px) {
+    /* Базовая адаптация */
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    /* Шапка */
+    .header-top {
+        padding: 10px 0;
+    }
+
+    .logo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo img {
+        height: 60px;
+        margin: 0 0 10px 0;
+    }
+
+    .logo-text h1 {
+        font-size: 1.3rem;
+    }
+
+    /* Навигация */
+    nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 5px 0;
+    }
+
+    nav li {
+        margin: 0;
+    }
+
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Словарь */
+    .dictionary-header {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-form input {
+        width: calc(100% - 80px);
+        font-size: 0.9rem;
+    }
+
+    .search-form button {
+        padding: 10px 15px;
+    }
+
+    /* Алфавитный фильтр */
+    .alphabet-filter {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 5px;
+        margin: 10px 0;
+    }
+
+    .alphabet-letter {
+        padding: 8px 5px;
+        font-size: 0.8rem;
+        min-width: auto;
+        text-align: center;
+    }
+
+    /* Таблица слов */
+    .word-list {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        min-width: 500px;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+
+    /* Главная страница */
+    .hero {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Форма предложения */
+    .suggest-form {
+        padding: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .alphabet-filter {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .hero {
+        padding: 15px;
+    }
+
+    .feature {
+        padding: 15px;
+    }
+}
+
+/* Мобильная таблица */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -10px;
+    padding: 0 10px;
+}
+
+table {
+    min-width: 600px;
+}
+
+.mobile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mobile-filter-btn {
+    background: var(--kfu-blue);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.mobile-hidden {
+    display: none;
+}
+
+.mobile-no-results {
+    text-align: center;
+    padding: 30px;
+}
+
+.mobile-no-results i {
+    font-size: 2rem;
+    color: var(--kfu-blue);
+    margin-bottom: 10px;
+}
