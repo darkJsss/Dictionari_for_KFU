@@ -55,6 +55,11 @@ def load_dictionary():
 
     return words
 
+@app.before_request
+def redirect_www_to_non_www():
+    if request.host.startswith('www.'):
+        return redirect(request.url.replace('www.', '', 1), code=301)
+
 
 @app.route('/')
 def index():
