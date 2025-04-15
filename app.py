@@ -34,7 +34,7 @@ create_tables()
 
 
 def load_dictionary():
-    excel_path = os.path.join(app.config['UPLOAD_FOLDER'], 'dictionary.xlsx')
+    excel_path = os.path.join(app.config['UPLOAD_FOLDER'], 'dictionary1.xlsx')
     words = []
 
     try:
