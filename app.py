@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, redirect
 from flask_sqlalchemy import SQLAlchemy
 from openpyxl import load_workbook
 import os
@@ -55,6 +55,10 @@ def load_dictionary():
 
     return words
 
+@app.before_request
+def redirect_www():
+    if request.host.startswith('www.'):
+        return redirect(request.url.replace('www.', '', 1), code=301)
 
 @app.route('/')
 def index():
