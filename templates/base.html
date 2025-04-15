@@ -2,32 +2,36 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Словарь заимствованных слов КФУ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="header-top">
             <div class="container">
                 <div class="logo">
-                    <img src="{{ url_for('static', filename='images/kfu_logo.png') }}" alt="КФУ Логотип">
+                    <img src="{{ url_for('static', filename='images/kfu_logo.png') }}" alt="Логотип КФУ" class="logo-img">
                     <div class="logo-text">
                         <h1>Казанский (Приволжский) Федеральный Университет</h1>
                         <p>Словарь заимствованных слов</p>
                     </div>
                 </div>
+                <button class="mobile-menu-toggle" aria-label="Меню">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
-        <nav>
+        <nav class="navbar">
             <div class="container">
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Главная</a></li>
-                    <li><a href="{{ url_for('dictionary') }}">Словарь</a></li>
-                    <li><a href="{{ url_for('memes') }}">Мемы</a></li>
-                    <li><a href="{{ url_for('suggest') }}">Предложить слово</a></li>
-                    <li><a href="{{ url_for('download_excel') }}">Скачать Excel</a></li>
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i><span>Главная</span></a></li>
+                    <li><a href="{{ url_for('dictionary') }}"><i class="fas fa-book"></i><span>Словарь</span></a></li>
+                    <li><a href="{{ url_for('memes') }}"><i class="fas fa-laugh-squint"></i><span>Мемы</span></a></li>
+                    <li><a href="{{ url_for('suggest') }}"><i class="fas fa-plus-circle"></i><span>Предложить слово</span></a></li>
+                    <li><a href="{{ url_for('download_excel') }}"><i class="fas fa-file-excel"></i><span>Скачать Excel</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -39,10 +43,66 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Казанский Федеральный Университет. Все права защищены.</p>
-            <p>Разработано студентами Лицея им.Н.И.Лобачевского при КФУ</p>
-            <p> Единственный разработчик: Фазылзянов Дамир Маратович 10А класс</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2025 Казанский Федеральный Университет. Все права защищены.</p>
+                    <p>Разработано студентами Лицея им.Н.И.Лобачевского при КФУ</p>
+                    <p>Единственный разработчик: Фазылзянов Дамир Маратович 10А класс</p>
+                </div>
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='images/kfu_logo.png') }}" alt="Логотип КФУ" class="footer-logo-img">
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Мобильное меню
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Закрытие меню при клике на пункт
+        document.querySelectorAll('.nav-menu a').forEach(item => {
+            item.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Фиксация шапки при скролле только на мобильных
+        function handleScroll() {
+            const headerTop = document.querySelector('.header-top');
+            if (window.innerWidth <= 768) {
+                if (window.scrollY > 10) {
+                    headerTop.classList.add('scrolled');
+                } else {
+                    headerTop.classList.remove('scrolled');
+                }
+            }
+        }
+
+        // Оптимизация обработчика скролла
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Проверка при загрузке
+        window.addEventListener('load', handleScroll);
+        window.addEventListener('resize', handleScroll);
+    </script>
 </body>
 </html>

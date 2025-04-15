@@ -1,4 +1,4 @@
-/* Основные стили */
+/* Базовые стили */
 :root {
     --kfu-blue: #005baa;
     --kfu-dark-blue: #003d7a;
@@ -8,89 +8,242 @@
     --dark-gray: #333333;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: var(--dark-gray);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
+    color: var(--dark-gray);
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
 /* Шапка */
-header {
-    background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
 .header-top {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--kfu-light-blue);
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
-.logo img {
-    height: 80px;
-    margin-right: 20px;
+.logo-img {
+    height: 60px;
+    width: auto;
 }
 
 .logo-text h1 {
-    margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--kfu-blue);
+    margin-bottom: 5px;
 }
 
 .logo-text p {
-    margin: 5px 0 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--dark-gray);
 }
 
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--kfu-blue);
+    cursor: pointer;
+    padding: 5px;
+}
+
 /* Навигация */
-nav {
-    background: linear-gradient(135deg, var(--kfu-blue) 0%, var(--kfu-dark-blue) 100%);
+.navbar {
+    background: linear-gradient(135deg, var(--kfu-dark-blue), var(--kfu-dark-blue));
+    position: relative;
+    z-index: 1000;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.nav-menu {
     display: flex;
-    flex-wrap: wrap;
+    list-style: none;
 }
 
-nav li {
-    margin-right: 20px;
+.nav-menu li {
+    position: relative;
 }
 
-nav a {
+.nav-menu a {
     color: var(--white);
     text-decoration: none;
-    padding: 15px 0;
-    display: block;
-    font-weight: 500;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: all 0.3s;
 }
 
-nav a:hover {
-    color: var(--kfu-light-blue);
-    transform: translateY(-2px);
+.nav-menu a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.nav-menu a i {
+    font-size: 1.1rem;
+}
+
+.nav-menu a span {
+    font-size: 0.95rem;
 }
 
 /* Основное содержимое */
 main {
-    padding: 40px 0;
-    min-height: 70vh;
+    flex: 1;
+    padding: 30px 0;
+}
+
+/* Подвал */
+footer {
+    background-color: var(--kfu-dark-blue);
+    color: var(--white);
+    padding: 25px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-info {
+    flex: 1;
+}
+
+.footer-info p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.footer-logo-img {
+    height: 50px;
+    opacity: 0.8;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .logo-text h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-menu a {
+        padding: 12px 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .header-top .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .header-top {
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+        background-color: var(--white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 70px;
+    }
+
+    .nav-menu {
+        position: sticky;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--kfu-dark-blue);
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        max-height: 500px;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        justify-content: center;
+        padding: 12px 15px;
+    }
+
+    .logo {
+        gap: 10px;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+
+    .logo-text h1 {
+        font-size: 1rem;
+    }
+
+    .logo-text p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text h1 {
+        font-size: 0.9rem;
+    }
+
+    .footer-info p {
+        font-size: 0.8rem;
+    }
+
+    .footer-logo-img {
+        height: 40px;
+    }
 }
 
 .hero {
@@ -203,112 +356,6 @@ main {
     margin-top: 0;
 }
 
-/* Словарь */
-.dictionary-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.search-form {
-    display: flex;
-    align-items: center;
-}
-
-.search-form input {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    font-size: 1rem;
-    width: 300px;
-}
-
-.search-form button {
-    padding: 10px 20px;
-    background-color: var(--kfu-blue);
-    color: var(--white);
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-form button:hover {
-    background-color: var(--kfu-dark-blue);
-}
-
-.word-list {
-    margin-top: 20px;
-}
-
-.word-list table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.word-list th, .word-list td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.word-list th {
-    background-color: var(--kfu-blue);
-    color: var(--white);
-    font-weight: 500;
-}
-
-.word-list tr:nth-child(even) {
-    background-color: var(--kfu-light-blue);
-}
-
-.word-list tr:hover {
-    background-color: #e0e0e0;
-}
-
-.no-results {
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-/* Алфавитный фильтр */
-.alphabet-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin: 20px 0;
-    justify-content: center;
-}
-
-.alphabet-letter {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: var(--kfu-light-blue);
-    color: var(--kfu-blue);
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.3s;
-    min-width: 30px;
-    text-align: center;
-}
-
-.alphabet-letter:hover {
-    background-color: var(--kfu-blue);
-    color: white;
-    transform: scale(1.05);
-}
-
-.alphabet-letter.active {
-    background-color: var(--kfu-blue);
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
 
 /* Форма предложения */
 .suggest-form {
@@ -448,40 +495,8 @@ main {
 .btn i {
     margin-right: 8px;
 }
-
-/* Подвал */
-footer {
-    background-color: var(--kfu-dark-blue);
-    color: var(--white);
-    padding: 30px 0;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-footer p {
-    margin: 5px 0;
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
-    .logo {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .logo img {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav li {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
 
     .dictionary-header {
         flex-direction: column;
@@ -526,5 +541,366 @@ footer p {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+
+/* Мобильные стили (дополнение к основным) */
+@media (max-width: 576px) {
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .suggest-form {
+        padding: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+
+    .meme-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Адаптивная таблица для очень маленьких экранов */
+    @media (max-width: 400px) {
+        td {
+            padding-left: 40%;
+        }
+        td:before {
+            width: 35%;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+/* Специальные мобильные элементы */
+.mobile-search-btn {
+    display: none;
+    padding: 10px 15px;
+    background: var(--kfu-blue);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+}
+
+.words-count-mobile {
+    display: none;
+    font-size: 0.9rem;
+    color: var(--kfu-blue);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.no-results-mobile {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.no-results-mobile i {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--kfu-blue);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .search-form button:not(.mobile-search-btn) {
+        display: none;
+    }
+
+    .mobile-search-btn {
+        display: block;
+    }
+
+    .words-count, .no-results {
+        display: none;
+    }
+
+    .words-count-mobile, .no-results-mobile {
+        display: block;
+    }
+
+    .alphabet-filter {
+        overflow-x: auto;
+        white-space: nowrap;
+        display: block;
+        padding-bottom: 10px;
+    }
+}
+
+/* Мобильная форма */
+.success-mobile {
+    text-align: center;
+    padding: 20px;
+}
+
+.success-mobile i {
+    color: #28a745;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.success-mobile h3 {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.mobile-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .form-group label i {
+        margin-right: 5px;
+    }
+
+    .suggest-form {
+        padding: 15px;
+    }
+
+    .alert.success {
+        display: none;
+    }
+
+    .success-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+}
+
+/* Основные стили словаря */
+.dictionary-header {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.dictionary-header h2 {
+    color: #005baa; /* Цвет КФУ */
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    border-right: none;
+}
+
+.search-form button {
+    padding: 0 20px;
+    background-color: #005baa;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #003d7a;
+}
+
+.alphabet-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.alphabet-letter {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #e6f0fa;
+    color: #005baa;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 36px;
+    text-align: center;
+}
+
+.alphabet-letter:hover,
+.alphabet-letter.active {
+    background-color: #005baa;
+    color: white;
+}
+
+.word-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.words-count {
+    margin-bottom: 15px;
+    color: #555;
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #005baa;
+    color: white;
+    font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f0f7ff;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .dictionary-header {
+        padding: 15px;
+    }
+
+    .dictionary-header h2 {
+        font-size: 1.5rem;
+    }
+
+    th, td {
+        padding: 10px 12px;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .dictionary-header {
+        padding: 15px 10px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 10px;
+        max-width: 100%;
+    }
+
+    .search-form input {
+        border-radius: 4px;
+        border-right: 1px solid #ddd;
+    }
+
+    .search-form button {
+        border-radius: 4px;
+        padding: 12px;
+    }
+
+    .alphabet-filter {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding-left: 10px;
+    }
+
+    .alphabet-letter {
+        min-width: 32px;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .word-list {
+        padding: 15px 10px;
+        margin-left: -10px;
+        margin-right: -10px;
+        border-radius: 0;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .dictionary-header h2 {
+        font-size: 1.3rem;
+    }
+
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .no-results {
+        padding: 30px 15px;
+        font-size: 1rem;
+    }
+
+    .words-count {
+        font-size: 0.9rem;
     }
 }
