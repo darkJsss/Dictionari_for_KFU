@@ -23,7 +23,6 @@ class Suggestion(db.Model):
     status = db.Column(db.String(20), default='pending')
 
 
-# Создаем таблицы при запуске приложения
 def create_tables():
     with app.app_context():
         db.create_all()
@@ -128,10 +127,10 @@ def memes():
 
 @app.route('/download-excel')
 def download_excel():
-    return send_from_directory(app.config['UPLOAD_FOLDER'], 'dictionary.xlsx', as_attachment=True)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], 'dictionary1.xlsx', as_attachment=True)
 
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # Дополнительная проверка создания таблиц
+        db.create_all()
     app.run(host='0.0.0.0', port=8000)
